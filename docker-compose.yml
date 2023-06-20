@@ -1,0 +1,14 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+    environment:
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
